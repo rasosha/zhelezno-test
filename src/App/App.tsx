@@ -6,29 +6,29 @@ import Dashboard from "../pages/DashboardPage/DashboardPage";
 import ListPage from "../pages/ListPage/ListPage";
 import NotFoundPage from "../pages/NotFoundPage";
 
-function App() {
-  const routerConfig: RouteObject[] = [
-    {
-      path: "/",
-      element: <Layout />,
-      children: [
-        {
-          index: true,
-          element: <Dashboard />,
-        },
-        {
-          path: "list",
-          element: <ListPage />,
-        },
-      ],
-    },
-    {
-      path: "*",
-      element: <NotFoundPage />,
-    },
-  ];
-  const router = createBrowserRouter(routerConfig);
+const routerConfig: RouteObject[] = [
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      {
+        index: true,
+        element: <Dashboard />,
+      },
+      {
+        path: "list",
+        element: <ListPage />,
+      },
+    ],
+  },
+  {
+    path: "*",
+    element: <NotFoundPage />,
+  },
+];
+const router = createBrowserRouter(routerConfig);
 
+function App() {
   return (
     <>
       <RouterProvider router={router} />
