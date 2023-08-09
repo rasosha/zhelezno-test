@@ -4,8 +4,14 @@ import { IPhoto } from "../../types";
 import S from "./Card.module.scss";
 
 const Card = ({ card }: { card: IPhoto }) => {
-  const { favorites, addToFavorites, removeFromFavorites, addFileSizeById, removeFileSizeById } =
-    useStore((state: ZState) => state);
+  const {
+    favorites,
+    addToFavorites,
+    removeFromFavorites,
+    addFileSizeById,
+    removeFileSizeById,
+    fileSizes,
+  } = useStore((state: ZState) => state);
   const isInFavorites = favorites.find((fav) => fav.id === card.id);
 
   const getFileSize = async (url: string) => {
@@ -33,6 +39,7 @@ const Card = ({ card }: { card: IPhoto }) => {
       <div className={S.info}>
         <h2 className={S.title}>{card.title}</h2>
         <a href={card.url}>открыть оригинал</a>
+        {fileSizes.hasOwnProperty(card.id) && <p>{fileSizes[card.id]} байт</p>}
       </div>
       <p className={S.id}>{card.id}</p>
       <button className={`${S.btn} ${isInFavorites ? S.btnRemove : S.btnAdd}`} onClick={handleLike}>
