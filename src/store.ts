@@ -20,6 +20,11 @@ export interface ZState {
     listPage: number;
   },
   setScroll: (page: string, value: number) => void
+  fileSizes: {
+    [key: number]: number,
+  }
+  addFileSizeById: (id: number, size: number) => void,
+  removeFileSizeById: (id: number) => void,
 }
 
 const useStore = create<ZState>((set) => ({
@@ -32,6 +37,7 @@ const useStore = create<ZState>((set) => ({
     dashboardPage: 0,
     listPage: 0,
   },
+  fileSizes: {},
 
   setPhotos: (value: IPhoto[]) =>
     set((state: ZState) => ({
@@ -83,6 +89,27 @@ const useStore = create<ZState>((set) => ({
         [page]: value
       }
     })),
+
+  addFileSizeById: (id: number, size: number) =>
+    set((state: ZState) => ({
+      ...state,
+      fileSizes: {
+        ...state.fileSizes,
+        [id]: size
+      }
+    })),
+
+  removeFileSizeById: (id: number) =>
+    set((state: ZState) => {
+      const newState = { ...state };
+      if (newState.fileSizes.hasOwnProperty(id)) {
+        delete newState.fileSizes[id];
+      } else {
+        console.log(`Key ${id} not found in the object.`);
+      }
+      return newState;
+    }),
+
 
 
 }));
