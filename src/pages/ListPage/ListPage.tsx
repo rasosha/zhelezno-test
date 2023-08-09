@@ -21,14 +21,18 @@ const ListPage = () => {
 
   useEffect(() => {
     if (isLoading) {
-      axios
-        .get(`https://jsonplaceholder.typicode.com/albums/1/photos?_page=${currentPage}&_limit=20`)
-        .then((res) => {
-          setPhotos(res.data);
-          setCurrentPage(currentPage + 1);
-          setTotalCount(+res.headers["x-total-count"]);
-        })
-        .finally(() => setIsLoading(false));
+      if (photos.length < totalCount) {
+        axios
+          .get(`https://jsonplaceholder.typicode.com/albums/1/photos?_page=${currentPage}&_limit=20`)
+          .then((res) => {
+            setPhotos(res.data);
+            setCurrentPage(currentPage + 1);
+            setTotalCount(+res.headers["x-total-count"]);
+          })
+          .finally(() => setIsLoading(false));
+      } else if ((photos.length = totalCount)) {
+        setIsLoading(false);
+      }
     }
   }, [isLoading]);
 
@@ -57,6 +61,7 @@ const ListPage = () => {
           <Card key={ph.id} card={ph} />
         ))}
       </section>
+      {isLoading && <div className={S.loader}>Loading...</div>}
     </main>
   );
 };

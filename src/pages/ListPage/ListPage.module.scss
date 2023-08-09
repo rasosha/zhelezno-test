@@ -1,6 +1,7 @@
 .main {
   width: 800px;
   display: flex;
+  flex-direction: column;
 }
 
 .cards {
@@ -9,4 +10,27 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+}
+
+.loader {
+  width: 100%;
+  height: 16px;
+  background: linear-gradient(270deg, #fff, #fff, #ff6347, #fff, #4169e1, #fff, #fff);
+  background-size: 600% 600%;
+  animation: loaderAnimation 3s ease infinite both;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  margin: 16px 0;
+  padding: 8px 0;
+}
+
+@keyframes loaderAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
 }

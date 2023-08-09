@@ -25,7 +25,7 @@ export interface ZState {
 const useStore = create<ZState>((set) => ({
   photos: [],
   currentPage: 1,
-  totalCount: 0,
+  totalCount: 1,
   favorites: [],
   isLoading: true,
   scroll: {
