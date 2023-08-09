@@ -1,0 +1,93 @@
+.body {
+  width: 800px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  box-shadow: 0 0 4px -2px #000;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  transition: all 1s ease;
+  position: relative;
+  margin: 12px;
+
+  &:hover {
+    transition: all 0.3s ease;
+    background: #f1f1f1;
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 12px;
+  }
+
+  .image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 8px;
+  }
+
+  .title {
+    font-size: 20px;
+    margin: 0;
+  }
+
+  .id {
+    position: absolute;
+    left: 6px;
+    bottom: 6px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    color: #fff;
+    background-color: #212121;
+  }
+
+  .btn {
+    background: none;
+    outline: none;
+    border: none;
+    margin: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    align-self: flex-end;
+    justify-self: end;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    border: 1px solid black;
+    transition: all 1s ease;
+    transform: rotate(0deg);
+    font-size: 24px;
+    line-height: 24px;
+  }
+
+  .btnRemove {
+    background: #ffaaaa;
+    transform: rotate(45deg);
+    &:hover {
+      transition: all 0.3s ease;
+      background: #ff5555;
+      transform: rotate(90deg);
+    }
+  }
+
+  .btnAdd {
+    background: #aaffaa;
+    transform: rotate(0deg);
+    &:hover {
+      transition: all 0.3s ease;
+      background: #55ff55;
+      transform: rotate(90deg);
+    }
+  }
+}
